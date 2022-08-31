@@ -1,0 +1,17 @@
+- [x]AND OR Should appear only after there are two rules
+- [] style Arrow of dropdown
+- [x] Delete button for second filters onwards
+- [x] Escape characters for string
+- [x] Hide Criteria when condition isEmpty()
+- [x] config driven
+- [x] Fix TS ERROR
+- [x] Expose query as Rule Object
+
+- [x] add Group filter Functionality
+
+- [] line between two groups
+
+
+- Export as npm package:
+- readme on how to use the package
+- 
