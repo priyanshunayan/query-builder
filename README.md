@@ -1,6 +1,6 @@
 # query-builder
 
-Currently it's a stand alone package which can be shipped as a resuable package.
+Currently it's a stand alone website which can be shipped as a resuable package.
 
 To Ship as package:
 
