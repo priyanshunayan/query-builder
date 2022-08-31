@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import { Rule, RuleType } from "./types";
 
-interface queryType {
+export interface queryType {
   rules: RuleType[] | undefined;
   condition: string | undefined;
   queryString: string | undefined;

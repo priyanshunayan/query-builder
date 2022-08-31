@@ -1,19 +1,11 @@
 import React, { useContext } from "react";
+import { getCombinedQueryString } from "./helper";
 import { useQuery } from "./query-context";
 
 const Header = (): JSX.Element => {
   const { query } = useQuery();
-  let combinedQueryString = "";
-  const queryLength = query?.length || 0;
 
-  for (let i = 0; i <= queryLength - 1; i++) {
-    if (query?.[i].queryString !== '""') {
-      combinedQueryString += query?.[i].queryString;
-      if (i !== queryLength - 1) {
-        combinedQueryString += " && ";
-      }
-    }
-  }
+  const combinedQueryString = getCombinedQueryString(query);
 
   return (
     <div className="bg-indigo-500 text-white p-8 flex justify-between w-100 items-center overflow-hidden">

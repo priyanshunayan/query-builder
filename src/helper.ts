@@ -1,5 +1,5 @@
-import { Rule } from "postcss";
 import { operatorMapping } from "./config";
+import { queryType } from "./query-context";
 import { RuleType } from "./types";
 
 const filterRules = (rule: RuleType) => {
@@ -33,4 +33,18 @@ export const generateQuery = (rules: RuleType[], condition: string): string => {
     }
   }
   return query;
+};
+
+export const getCombinedQueryString = (query: queryType[] | undefined) => {
+  let combinedQueryString = "";
+  const queryLength = query?.length || 0;
+  for (let i = 0; i <= queryLength - 1; i++) {
+    if (query?.[i].queryString !== '""') {
+      combinedQueryString += query?.[i].queryString;
+      if (i !== queryLength - 1) {
+        combinedQueryString += " && ";
+      }
+    }
+  }
+  return combinedQueryString;
 };
