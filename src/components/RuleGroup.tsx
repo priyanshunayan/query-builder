@@ -1,18 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { generateQuery } from "./helper";
-import { useQuery } from "./query-context";
+import { generateQuery } from "../helper";
+import { useQuery } from "../query-context";
 
 import RuleGroupItem from "./RuleGroupItem";
-import { RuleType } from "./types";
-
-const tabs = [
-  { name: "AND", current: true },
-  { name: "OR", current: false },
-];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 const RuleGroup = (): JSX.Element => {
   const { setQuery, query } = useQuery();
@@ -39,13 +29,22 @@ const RuleGroup = (): JSX.Element => {
   }
 
   return (
-    <div className="max-w-[908px] mx-auto">
-      {query && query?.map((q) => <RuleGroupItem id={q.id} />)}
+    <div className="max-w-[908px] mx-auto relative">
+      <div className="relative">
+        {query &&
+          query?.map((q) => (
+            <>
+              <RuleGroupItem id={q.id} />
+              <div className="absolute left-6 h-5 border ml-4 border-emperor" />
+            </>
+          ))}
+      </div>
+
       <button
-        className="bg-indigo-500 py-2 px-4 text-white my-2 ml-4 rounded-md text-sm mt-8 mb-4"
+        className="bg-indigo-500 py-2 px-4 text-white my-2 ml-4 rounded-md text-sm mt-5 mb-4"
         onClick={addGroup}
       >
-        + Add Group
+        + Add new group filter
       </button>
     </div>
   );

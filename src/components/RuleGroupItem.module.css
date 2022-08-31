@@ -1,0 +1,7 @@
+.groupBg {
+    background: linear-gradient(0deg, #282B30, #282B30), linear-gradient(0deg, #404348, #404348);
+}
+
+.tabBg {
+    background: linear-gradient(0deg, #404348, #404348), linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+}

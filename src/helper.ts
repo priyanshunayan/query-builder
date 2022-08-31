@@ -39,8 +39,8 @@ export const getCombinedQueryString = (query: queryType[] | undefined) => {
   let combinedQueryString = "";
   const queryLength = query?.length || 0;
   for (let i = 0; i <= queryLength - 1; i++) {
-    if (query?.[i].queryString !== '""') {
-      combinedQueryString += query?.[i].queryString;
+    if (query?.[i].queryString !== "") {
+      combinedQueryString += `"${query?.[i].queryString}"`;
       if (i !== queryLength - 1) {
         combinedQueryString += " && ";
       }

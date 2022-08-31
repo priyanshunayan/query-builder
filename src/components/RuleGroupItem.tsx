@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { generateQuery } from "./helper";
-import { useQuery } from "./query-context";
+import { generateQuery } from "../helper";
+import { useQuery } from "../query-context";
 import Rule from "./Rule";
-import { RuleType } from "./types";
+import { RuleType } from "../types";
+import styles from "./RuleGroupItem.module.css";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -47,17 +48,7 @@ const RuleGroupItem = ({ id }: { id: string }): JSX.Element => {
     ];
     setRules(newRules);
   }
-  function updateRule({
-    field,
-    condition,
-    criteria,
-    id,
-  }: {
-    field: string;
-    condition: string;
-    criteria: string;
-    id: string;
-  }) {
+  function updateRule({ field, condition, criteria, id }: RuleType) {
     const updatedRules = rules.map((rule) =>
       rule.id === id ? { field, condition, criteria, id } : rule
     );
@@ -89,9 +80,11 @@ const RuleGroupItem = ({ id }: { id: string }): JSX.Element => {
     return activeTab.name;
   }
   return (
-    <div className="m-4 mb-0 border border-light-gray rounded ">
+    <div
+      className={`m-4 mt-5 mb-0 border border-light-gray ${styles.groupBg} rounded`}
+    >
       <nav
-        className="relative z-0 rounded-lg shadow flex mt-2 ml-2 border border-light-gray w-fit"
+        className="relative z-0 rounded-lg shadow flex mt-4 ml-4 border border-light-gray w-fit"
         aria-label="Tabs"
       >
         {rules.length > 1
@@ -99,7 +92,9 @@ const RuleGroupItem = ({ id }: { id: string }): JSX.Element => {
               <button
                 key={tab.name}
                 className={classNames(
-                  tab.current ? "bg-custom-indigo rounded" : " dark-bg rounded",
+                  tab.current
+                    ? "bg-custom-indigo rounded"
+                    : `${styles.tabBg}rounded`,
                   tabIdx === 0 ? "rounded-l-sm" : "",
                   tabIdx === tabs.length - 1 ? "rounded-r-sm" : "",
                   "font-semibold text-white group relative min-w-0 overflow-hidden py-2 px-4 text-sm text-center focus:z-10"

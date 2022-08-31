@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
-import DustbinIcon from "./images/svg/dustbin.svg";
-import { conditions, Criteria, fields } from "./config";
+import DustbinIcon from "../images/svg/dustbin.svg";
+import { conditions, Criteria, fields } from "../config";
 import {
   Common,
   Conditions,
   CriteriaType,
   Prediction,
+  Rule,
   RuleType,
-} from "./types";
-
-/*
-    TODO:
-    Remove criteria if isEmpty or is not empty is selected
-*/
+} from "../types";
+import styles from "./Rule.module.css";
 
 interface Props {
   rule: RuleType;
-  updateRule: Function;
-  deleteRule: Function;
+  updateRule: (a: RuleType) => void;
+  deleteRule: (a: { id: string }) => void;
   totalRules: Number;
 }
 
@@ -59,8 +56,10 @@ const Rule = ({
             id="field"
             onChange={(event) => setField(event.target.value)}
             value={field}
-            className={`bg-white-0.1 px-3 py-2 ${
-              field === "" ? "text-white-0.5" : "text-white"
+            className={` px-3 py-2 ${
+              field === ""
+                ? `text-white-0.5 ${styles.selectBg}`
+                : `text-white ${styles.selectBg}`
             } font-medium rounded`}
           >
             <option value="" selected disabled hidden>
@@ -102,8 +101,10 @@ const Rule = ({
             onChange={(event) => setCondition(event.target.value)}
             value={condition}
             className={classNames(
-              condition === "" ? "text-white-0.5" : "text-white",
-              "bg-white-0.1 px-3 py-2  font-medium rounded"
+              condition === ""
+                ? `text-white-0.5 ${styles.selectBg}`
+                : `text-white ${styles.selectBg}`,
+              "px-3 py-2  font-medium rounded"
             )}
           >
             <option value="">Select condition</option>
@@ -127,9 +128,11 @@ const Rule = ({
               id="criteria"
               onChange={(event) => setCriteria(event.target.value)}
               value={criteria}
-              className={`bg-white-0.1 px-3 py-2 ${
-                criteria === "" ? "text-white-0.5" : "text-white"
-              } font-medium rounded`}
+              className={`px-3 py-2 ${
+                criteria === ""
+                  ? `text-white-0.5 ${styles.selectBg}`
+                  : `text-white ${styles.selectBg}`
+              } font-medium rounded ${styles.selectBg}`}
             >
               <option value="">Select field</option>
               {Object.keys(Criteria).map((criteria) => (
