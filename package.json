@@ -18,7 +18,6 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.8",
-    "enterpret-project": "^1.0.0",
     "postcss": "^8.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
